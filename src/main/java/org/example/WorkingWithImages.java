@@ -27,18 +27,18 @@ public JScrollPane prepareScrollPane(){
 }
     public JPanel CardsPanel(){
         cardsPanel=new JPanel();
-        cardsPanel.setLayout(new GridLayout(2,2));
+        cardsPanel.setLayout(new GridLayout(2,2,10,10));
         String[][] fruits={
-                {"apple.jpg","APPLE"},
-                {"banana.jpg","BANANA"},
-                {"grapes.jpg","GRAPES",},
-                {"mango.jpg","MANGO"},
-                {"pineapple.jpg","PINEAPPLE"},
-                {"orange.jpg","ORANGE"},
-                {"watermelon.jpg","WATERMMELON"},
-                {"jackfruit.jpg","JACKFRUIT"},
-                {"pear.jpg","PEAR"},
-                {"strawberry.jpg","STRAWBERRY"}
+                {"apple.jpg","APPLE", "APPLE", "Crisp, sweet and perfect for a healthy snack."},
+                {"banana.jpg","BANANA","Rich in potassium, great for energy."},
+                {"grapes.jpg","GRAPES", "Juicy and perfect for making wine or snacks."},
+                {"mango.jpg","MANGO", "Tropical fruit known as the king of fruits."},
+                {"pineapple.jpg","PINEAPPLE", "Tangy, tropical and full of vitamins."},
+                {"orange.jpg","ORANGE", "Rich in vitamin C and refreshing taste."},
+                {"watermelon.jpg","WATERMMELON", "Sweet, hydrating fruit perfect for summer."},
+                {"jackfruit.jpg","JACKFRUIT", "Large tropical fruit with a meaty texture."},
+                {"pear.jpg","PEAR", "Soft, juicy fruit with subtle sweetness."},
+                {"strawberry.jpg","STRAWBERRY", "Bright red, sweet fruit used in desserts."}
         };
         for(String[] fruit:fruits){cardsPanel.add(prepareFruitCardPanel(fruit[0],fruit[1]));}
         return cardsPanel;
@@ -66,6 +66,7 @@ public JScrollPane prepareScrollPane(){
         return new ImageIcon(scaledImage);
 
     }
+
     //awab add the descriptions and the hover effects and any information you need to include
     //dont change the size of the main frame the scrolls wont be visible
 
