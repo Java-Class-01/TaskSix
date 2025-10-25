@@ -6,7 +6,7 @@ public class WorkingWithImages {
     JFrame FruitsFrame;
     JScrollPane scrollPane;
     JPanel cardsPanel,FruitCardPanel,JPanelFruitCard;
-    JLabel JLabelName;
+    JLabel JLabelName,JLabelImage;
     public WorkingWithImages(){
         this.prepareMainFruitsFrame();
     }
@@ -79,12 +79,13 @@ public JScrollPane prepareScrollPane(){
         JLabelName.setAlignmentX(Component.CENTER_ALIGNMENT);
         return JLabelName;
     }
-        JLabel imageLabel = new JLabel(loadImageIcon(imageName,250,250));
-        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-
-        return FruitCardPanel;
+    public JLabel prepareJLabelImage(String imageName) {
+        JLabelImage = new JLabel(loadImageIcon(imageName,250,250));
+        JLabelImage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return JLabelImage;
     }
+
+
     public ImageIcon loadImageIcon(String imageName,int width,int height){
         String path = "images/" + imageName;
         ImageIcon mainicon=new ImageIcon(path);
