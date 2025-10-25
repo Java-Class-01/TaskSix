@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class WorkingWithImages {
     JFrame FruitsFrame;
+    JPanel JPanelFruitCard;
     JScrollPane scrollPane;
     JPanel cardsPanel,FruitCardPanel;
     public WorkingWithImages(){
@@ -40,15 +41,29 @@ public JScrollPane prepareScrollPane(){
                 {"pear.jpg","PEAR", "Soft, juicy fruit with subtle sweetness."},
                 {"strawberry.jpg","STRAWBERRY", "Bright red, sweet fruit used in desserts."}
         };
-        for(String[] fruit:fruits){cardsPanel.add(prepareFruitCardPanel(fruit[0],fruit[1]));}
+        for(String[] fruit:fruits){cardsPanel.add(prepareFruitCardPanel(fruit[0],fruit[1],fruit[2]));}
         return cardsPanel;
     }
-    public JPanel prepareFruitCardPanel(String imageName,String fruitName){
-        FruitCardPanel=new JPanel();
-        FruitCardPanel.setLayout(new BoxLayout(FruitCardPanel,BoxLayout.Y_AXIS));
-        FruitCardPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+    public JPanel prepareFruitCardPanel(String imageName,String fruitName,String description) {
+        FruitCardPanel = new JPanel();
+        FruitCardPanel.setLayout(new BoxLayout(FruitCardPanel, BoxLayout.Y_AXIS));
+        FruitCardPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         FruitCardPanel.setBackground(Color.white);
-
+        // Add Components
+        JPanelFruitCard.add(Box.createVerticalStrut(10));
+        JPanelFruitCard.add(this.prepareJLabelImage(imageName));
+        JPanelFruitCard.add(Box.createVerticalStrut(5));
+        JPanelFruitCard.add(this.prepareJLabelName(fruitName));
+        JPanelFruitCard.add(Box.createVerticalStrut(5));
+        JPanelFruitCard.add(this.prepareJTextAreaDescription(description));
+        JPanelFruitCard.add(Box.createVerticalStrut(10));
+        JPanelFruitCard.add(this.prepareJPanelButtons(fruitName, description, imageName));
+        // Hover Effect
+        JPanelFruitCard.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 2));
+                JPanelFruitCard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }
         JLabel nameLabel = new JLabel(fruitName);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
