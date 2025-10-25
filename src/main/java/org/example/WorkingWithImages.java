@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class WorkingWithImages {
     JFrame FruitsFrame;
     JScrollPane scrollPane;
-    JPanel cardsPanel,FruitCardPanel,JPanelFruitCard;
+    JPanel cardsPanel,FruitCardPanel,JPanelButtons,JPanelFruitCard;
     JLabel JLabelName,JLabelImage;
     JTextArea JTextAreaDescription;
     public WorkingWithImages(){
@@ -104,6 +104,15 @@ public JScrollPane prepareScrollPane(){
         JTextAreaDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
         return JTextAreaDescription;
     }
+    // === Buttons Panel ===
+    public JPanel prepareJPanelButtons(String fruitName, String description, String imageName) {
+        JPanelButtons = new JPanel(new FlowLayout());
+        JPanelButtons.setBackground(Color.WHITE);
+        JPanelButtons.add(this.prepareJButtonViewMore(fruitName, description, imageName));
+        JPanelButtons.add(this.prepareJButtonFavorite(fruitName));
+        return JPanelButtons;
+    }
+
 
 
 
