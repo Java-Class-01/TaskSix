@@ -43,6 +43,21 @@ public JScrollPane prepareScrollPane(){
         for(String[] fruit:fruits){cardsPanel.add(prepareFruitCardPanel(fruit[0],fruit[1]));}
         return cardsPanel;
     }
+    public JPanel prepareFruitCardPanel(String imageName,String fruitName){
+        FruitCardPanel=new JPanel();
+        FruitCardPanel.setLayout(new BoxLayout(FruitCardPanel,BoxLayout.Y_AXIS));
+        FruitCardPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+        FruitCardPanel.setBackground(Color.white);
+
+        JLabel nameLabel = new JLabel(fruitName);
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabel imageLabel = new JLabel(loadImageIcon(imageName,250,250));
+        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+        return FruitCardPanel;
+    }
 
 
 
