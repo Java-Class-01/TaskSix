@@ -25,6 +25,24 @@ public JScrollPane prepareScrollPane(){
     scrollPane.getVerticalScrollBar().setUnitIncrement(16);
     return scrollPane;
 }
+    public JPanel CardsPanel(){
+        cardsPanel=new JPanel();
+        cardsPanel.setLayout(new GridLayout(2,2));
+        String[][] fruits={
+                {"apple.jpg","APPLE"},
+                {"banana.jpg","BANANA"},
+                {"grapes.jpg","GRAPES",},
+                {"mango.jpg","MANGO"},
+                {"pineapple.jpg","PINEAPPLE"},
+                {"orange.jpg","ORANGE"},
+                {"watermelon.jpg","WATERMMELON"},
+                {"jackfruit.jpg","JACKFRUIT"},
+                {"pear.jpg","PEAR"},
+                {"strawberry.jpg","STRAWBERRY"}
+        };
+        for(String[] fruit:fruits){cardsPanel.add(prepareFruitCardPanel(fruit[0],fruit[1]));}
+        return cardsPanel;
+    }
 
 
 
