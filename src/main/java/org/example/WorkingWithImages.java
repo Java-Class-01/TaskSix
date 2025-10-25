@@ -17,6 +17,14 @@ public class WorkingWithImages {
         FruitsFrame.setVisible(true);
         return FruitsFrame;
     }
+//creating the scrollpane to allow scrolling
+public JScrollPane prepareScrollPane(){
+    scrollPane=new JScrollPane(CardsPanel());
+    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+    return scrollPane;
+}
 
 
 
