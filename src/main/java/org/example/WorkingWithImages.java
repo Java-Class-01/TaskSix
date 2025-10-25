@@ -63,6 +63,15 @@ public JScrollPane prepareScrollPane(){
             public void mouseEntered(MouseEvent e) {
                 JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 2));
                 JPanelFruitCard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            public void mouseExited(MouseEvent e) {
+                JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                JPanelFruitCard.setCursor(Cursor.getDefaultCursor());
+            }
+        });
+
+        return JPanelFruitCard;
     }
         JLabel nameLabel = new JLabel(fruitName);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
