@@ -8,6 +8,7 @@ public class WorkingWithImages {
     JPanel cardsPanel,FruitCardPanel,JPanelButtons,JPanelFruitCard;
     JLabel JLabelName,JLabelImage;
     JTextArea JTextAreaDescription;
+    JButton JButtonViewMore,JButtonFavorite;
     public WorkingWithImages(){
         this.prepareMainFruitsFrame();
     }
@@ -31,7 +32,7 @@ public JScrollPane prepareScrollPane(){
         cardsPanel=new JPanel();
         cardsPanel.setLayout(new GridLayout(2,2,10,10));
         String[][] fruits={
-                {"apple.jpg","APPLE", "APPLE", "Crisp, sweet and perfect for a healthy snack."},
+                {"apple.jpg","APPLE", "Crisp, sweet and perfect for a healthy snack."},
                 {"banana.jpg","BANANA","Rich in potassium, great for energy."},
                 {"grapes.jpg","GRAPES", "Juicy and perfect for making wine or snacks."},
                 {"mango.jpg","MANGO", "Tropical fruit known as the king of fruits."},
@@ -51,28 +52,17 @@ public JScrollPane prepareScrollPane(){
         FruitCardPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         FruitCardPanel.setBackground(Color.white);
         // Add Components
-        JPanelFruitCard.add(Box.createVerticalStrut(10));
-        JPanelFruitCard.add(this.prepareJLabelImage(imageName));
-        JPanelFruitCard.add(Box.createVerticalStrut(5));
-        JPanelFruitCard.add(this.prepareJLabelName(fruitName));
-        JPanelFruitCard.add(Box.createVerticalStrut(5));
-        JPanelFruitCard.add(this.prepareJTextAreaDescription(description));
-        JPanelFruitCard.add(Box.createVerticalStrut(10));
-        JPanelFruitCard.add(this.prepareJPanelButtons(fruitName, description, imageName));
-        // Hover Effect
-        JPanelFruitCard.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 2));
-                JPanelFruitCard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            }
+        FruitCardPanel.add(Box.createVerticalStrut(10));
+        FruitCardPanel.add(this.prepareJLabelImage(imageName));
+        FruitCardPanel.add(Box.createVerticalStrut(5));
+        FruitCardPanel.add(this.prepareJLabelName(fruitName));
+        FruitCardPanel.add(Box.createVerticalStrut(5));
+        FruitCardPanel.add(this.prepareJTextAreaDescription(description));
+        FruitCardPanel.add(Box.createVerticalStrut(10));
+        FruitCardPanel.add(this.prepareJPanelButtons(fruitName, description, imageName));
+        addHoverEffect(FruitCardPanel);
 
-            public void mouseExited(MouseEvent e) {
-                JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-                JPanelFruitCard.setCursor(Cursor.getDefaultCursor());
-            }
-        });
-
-        return JPanelFruitCard;
+        return FruitCardPanel;
     }
     public JLabel prepareJLabelName(String fruitName) {
         JLabelName = new JLabel(fruitName);
@@ -112,7 +102,56 @@ public JScrollPane prepareScrollPane(){
         JPanelButtons.add(this.prepareJButtonFavorite(fruitName));
         return JPanelButtons;
     }
+    // === View More Button ===
+    public JButton prepareJButtonViewMore(String fruitName, String description, String imageName) {
+        JButtonViewMore = new JButton("View More");
+        JButtonViewMore.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(FruitsFrame,
+                        fruitName + "\n\n" + description + "\n\nMore details coming soon!",
+                        fruitName + " Details",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        loadImageIcon(imageName, 100, 100));
+            }
+        });
+        return JButtonViewMore;
+    }
 
+    // === Favorite Button ===
+    public JButton prepareJButtonFavorite(String fruitName) {
+        JButtonFavorite = new JButton("Add to Favorites");
+        JButtonFavorite.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(FruitsFrame,
+                        fruitName + " added to favorites! ❤️",
+                        "Favorites",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        return JButtonFavorite;
+    }
+    // === Hover Effect Helper ===
+    private void addHoverEffect(JPanel panel) {
+        MouseAdapter hover = new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                panel.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 2));
+                panel.setBackground(new Color(255, 250, 240)); // light orange tint
+                panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            public void mouseExited(MouseEvent e) {
+                panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                panel.setBackground(Color.WHITE);
+                panel.setCursor(Cursor.getDefaultCursor());
+            }
+        };
+
+        // Add to the panel itself and all its children
+        panel.addMouseListener(hover);
+        for (Component c : panel.getComponents()) {
+            c.addMouseListener(hover);
+        }
+    }
 
 
 
