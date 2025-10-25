@@ -58,6 +58,16 @@ public JScrollPane prepareScrollPane(){
 
         return FruitCardPanel;
     }
+    public ImageIcon loadImageIcon(String imageName,int width,int height){
+        String path = "images/" + imageName;
+        ImageIcon mainicon=new ImageIcon(path);
+        Image mainimage=mainicon.getImage();
+        Image scaledImage=mainimage.getScaledInstance(width,height,Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+
+    }
+    //awab add the descriptions and the hover effects and any information you need to include
+    //dont change the size of the main frame the scrolls wont be visible
 
 
 
