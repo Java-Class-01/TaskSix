@@ -58,6 +58,11 @@ public JScrollPane prepareScrollPane(){
         JPanelFruitCard.add(this.prepareJTextAreaDescription(description));
         JPanelFruitCard.add(Box.createVerticalStrut(10));
         JPanelFruitCard.add(this.prepareJPanelButtons(fruitName, description, imageName));
+        // Hover Effect
+        JPanelFruitCard.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                JPanelFruitCard.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 2));
+                JPanelFruitCard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
         JLabel nameLabel = new JLabel(fruitName);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
