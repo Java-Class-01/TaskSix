@@ -4,9 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 public class WorkingWithImages {
     JFrame FruitsFrame;
-    JPanel JPanelFruitCard;
     JScrollPane scrollPane;
-    JPanel cardsPanel,FruitCardPanel;
+    JPanel cardsPanel,FruitCardPanel,JPanelFruitCard;
+    JLabel JLabelName;
     public WorkingWithImages(){
         this.prepareMainFruitsFrame();
     }
@@ -73,9 +73,12 @@ public JScrollPane prepareScrollPane(){
 
         return JPanelFruitCard;
     }
-        JLabel nameLabel = new JLabel(fruitName);
-        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
+    public JLabel prepareJLabelName(String fruitName) {
+        JLabelName = new JLabel(fruitName);
+        JLabelName.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabelName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return JLabelName;
+    }
         JLabel imageLabel = new JLabel(loadImageIcon(imageName,250,250));
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
