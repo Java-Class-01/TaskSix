@@ -7,6 +7,7 @@ public class WorkingWithImages {
     JScrollPane scrollPane;
     JPanel cardsPanel,FruitCardPanel,JPanelFruitCard;
     JLabel JLabelName,JLabelImage;
+    JTextArea JTextAreaDescription;
     public WorkingWithImages(){
         this.prepareMainFruitsFrame();
     }
@@ -94,9 +95,15 @@ public JScrollPane prepareScrollPane(){
         return new ImageIcon(scaledImage);
 
     }
-
-    //awab add the descriptions and the hover effects and any information you need to include
-    //dont change the size of the main frame the scrolls wont be visible
+    public JTextArea prepareJTextAreaDescription(String description) {
+        JTextAreaDescription = new JTextArea(description);
+        JTextAreaDescription.setLineWrap(true);
+        JTextAreaDescription.setWrapStyleWord(true);
+        JTextAreaDescription.setEditable(false);
+        JTextAreaDescription.setBackground(Color.WHITE);
+        JTextAreaDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return JTextAreaDescription;
+    }
 
 
 
