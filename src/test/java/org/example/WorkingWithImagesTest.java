@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import javax.swing.*;
 import java.awt.*;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class WorkingWithImagesTest {
@@ -12,6 +13,8 @@ public class WorkingWithImagesTest {
     
     @BeforeEach
     void setUp() {
+        // Skip GUI tests in headless environment (like CI/CD)
+        assumeFalse(GraphicsEnvironment.isHeadless(), "Skipping GUI tests in headless environment");
         workingWithImages = new WorkingWithImages();
     }
     
